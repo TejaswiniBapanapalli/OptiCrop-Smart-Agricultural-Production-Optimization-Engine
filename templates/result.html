@@ -1,25 +1,247 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>OptiCrop - Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">OptiCrop</a>
-        </div>
-    </nav>
+{% extends "base.html" %}
 
-    <div class="container mt-5 text-center">
-        <h2>Crop Recommendation Result</h2>
-        <p><strong>Recommended Crop:</strong> {{ crop }}</p>
-        <p><strong>Confidence Score:</strong> {{ confidence }}</p>
-        <p><strong>Fertilizer Recommendation:</strong> {{ fertilizer }}</p>
-        <p><strong>Irrigation Recommendation:</strong> {{ irrigation }}</p>
-        <a href="/" class="btn btn-primary">Go Back</a>
-    </div>
-</body>
-</html>
+{% block title %}
+Prediction Result | OptiCrop
+{% endblock %}
+
+{% block content %}
+
+<section class="result-section">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="result-card">
+
+<div class="text-center">
+
+<div class="success-icon">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<h1 class="fw-bold text-success">
+
+Prediction Completed Successfully
+
+</h1>
+
+<p class="text-muted">
+
+Our Artificial Intelligence model analyzed your agricultural parameters.
+
+</p>
+
+</div>
+
+<hr>
+
+<div class="row mt-5">
+
+<div class="col-md-6">
+
+<div class="crop-card">
+
+<h4>
+
+🌾 Recommended Crop
+
+</h4>
+
+<h1 class="display-4 fw-bold text-success">
+
+{{ crop }}
+
+</h1>
+
+<p>
+
+This crop is highly suitable for the provided soil and climatic conditions.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="summary-card">
+
+<h4>
+
+📊 Input Summary
+
+</h4>
+
+<table class="table">
+
+<tr>
+
+<td>Nitrogen</td>
+
+<td>{{ nitrogen }}</td>
+
+</tr>
+
+<tr>
+
+<td>Phosphorous</td>
+
+<td>{{ phosphorous }}</td>
+
+</tr>
+
+<tr>
+
+<td>Potassium</td>
+
+<td>{{ potassium }}</td>
+
+</tr>
+
+<tr>
+
+<td>Temperature</td>
+
+<td>{{ temperature }} °C</td>
+
+</tr>
+
+<tr>
+
+<td>Humidity</td>
+
+<td>{{ humidity }} %</td>
+
+</tr>
+
+<tr>
+
+<td>pH</td>
+
+<td>{{ ph }}</td>
+
+</tr>
+
+<tr>
+
+<td>Rainfall</td>
+
+<td>{{ rainfall }} mm</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row mt-5">
+
+<div class="col-md-4">
+
+<div class="info-box">
+
+<i class="fa-solid fa-droplet"></i>
+
+<h5>
+
+Water Management
+
+</h5>
+
+<p>
+
+Maintain adequate irrigation based on seasonal rainfall.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="info-box">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h5>
+
+Soil Health
+
+</h5>
+
+<p>
+
+Balanced nutrient values improve crop productivity.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="info-box">
+
+<i class="fa-solid fa-flask"></i>
+
+<h5>
+
+Fertilizer Advice
+
+</h5>
+
+<p>
+
+Use fertilizers according to soil nutrient deficiencies.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="text-center mt-5">
+
+<a href="{{ url_for('prediction') }}" class="btn btn-success btn-lg me-3">
+
+<i class="fa-solid fa-rotate"></i>
+
+Predict Again
+
+</a>
+
+<a href="{{ url_for('home') }}" class="btn btn-outline-success btn-lg">
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}
